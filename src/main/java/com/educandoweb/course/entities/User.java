@@ -1,13 +1,20 @@
 package com.educandoweb.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user") // "User" ja é uma palavra reservado no H2, então, sobrescrevemos
 public class User implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
+    @Id // Definindo a Chave Primária
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // autoIncrementável
     private Long id;
     private String name;
     private String email;
